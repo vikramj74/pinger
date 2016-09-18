@@ -34,6 +34,8 @@ class PingController {
             this.togglePingBtn.innerHTML = 'Setup Ping';
             this.togglePingBtn.classList.add('setup');
             this.togglePingBtn.classList.remove('clear');
+            this.showElem(this.pingCountViewContainer);
+            this.showElem(this.lastPingedAtViewContainer);
             this.enableControls();
         }
     }
@@ -96,6 +98,9 @@ class PingController {
             this.pingStartedAtView = document.querySelector('#ping_started_at');
             this.lastPingedAtView = document.querySelector('#last_pinged_at');
             this.pingViewSection = document.querySelector('#ping_view');
+            this.pingCountViewContainer = document.querySelector('#ping_count_container');
+            this.lastPingedAtViewContainer = document.querySelector('#last_pinged_at_container');
+            this.pingStartedAtViewContainer = document.querySelector('#ping_started_at_container');
             this.togglePingBtn.addEventListener('click', (event) => {
                 if(this.isPinging) {
                     this.togglePingBtn.innerHTML = 'Setup Ping';
@@ -134,11 +139,26 @@ class PingController {
 
     }
 
+    showElem(elem) {
+        elem.classList.remove('hidden');
+    }
+
+    hideElem(elem) {
+        elem.classList.add('hidden');
+    }
+
     syncView() {
         this.pingCountView.innerHTML = (this.pingCount === -1) ? "N/A" : (this.pingCount+""); 
         this.pingStartedAtView.innerHTML = (this.pingStartedAt) ? this.pingStartedAt : "N/A";
         this.lastPingedAtView.innerHTML = (this.lastPingedAt) ? this.lastPingedAt : "N/A";
         this.pingViewSection.style.display = (this.pingCount === -1) ? "none" : "block";
+        if(this.pingIsRecurring.checked) {
+            this.showElem(this.pingCountViewContainer);
+            this.showElem(this.lastPingedAtViewContainer);
+        } else {
+            this.hideElem(this.pingCountViewContainer);
+            this.hideElem(this.lastPingedAtViewContainer);
+        }
     }
 
     constructor() {
