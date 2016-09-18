@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pinger</title>
+        <meta charset="UTF-8" />
+        <meta name="author" content="Vikram Jaswal" />
+
+        <!-- -->
+        <link rel="stylesheet" href="styles/style_mod.css" />
+        <script type="text/javascript" src="./controllers/PingController.js"></script>
+    </head>    
+    <body>
+        <h1>Pinger</h1>
+        <form onsubmit="return false;">
+                <label>
+                Ping me after
+                <input id="duration" type="number" min="0" />
+            </label>
+            <select id="unit">
+                <option value="s">Seconds</option>
+                <option value="m">Minutes</option>
+                <option value="h">Hours</option>
+            </select>    
+            <label>
+                and say
+                <input type="text" id="alarm_text" placeholder="something ..."/>
+            </label>
+            <label>
+                <small>( Keep pinging me always ? )</small>
+                <input type="checkbox" id="is_recurring" />
+            </label>
+            <button id="toggle_alarm" class="setup">Setup Ping</button>
+        </form>
+        <div id="ping_view" style="display:none;">
+            <p>Ping count : <span id="ping_count">N/A</span></p>
+            <p>Last pinged at : <span id="last_pinged_at">N/A</span></p>
+            <p>Ping started at : <span id="ping_started_at">N/A</span></p>
+        </div>
+        <script>
+            const controller = new PingController();
+        </script>
+    </body>
+</html>
