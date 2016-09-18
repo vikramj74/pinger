@@ -5,9 +5,11 @@
         <meta charset="UTF-8" />
         <meta name="author" content="Vikram Jaswal" />
 
-        <!-- -->
+        <!-- CSS -->
         <link rel="stylesheet" href="styles/style_mod.css" />
-        <script type="text/javascript" src="./controllers/PingController.js"></script>
+        <!-- JS -->
+        <script defer type="text/javascript" src="./scripts/controllers/PingController.js"></script>
+        <script defer type="text/javascript" src="./scripts/index.js"></script> 
     </head>    
     <body>
         <h1>Pinger</h1>
@@ -32,12 +34,9 @@
             <button id="toggle_alarm" class="setup">Setup Ping</button>
         </form>
         <div id="ping_view" style="display:none;">
-            <p>Ping count : <span id="ping_count">N/A</span></p>
-            <p>Last pinged at : <span id="last_pinged_at">N/A</span></p>
-            <p>Ping started at : <span id="ping_started_at">N/A</span></p>
+            <p id="ping_count_container">Ping count : <span id="ping_count">N/A</span></p>
+            <p id="last_pinged_at_container">Last pinged at : <span id="last_pinged_at">N/A</span></p>
+            <p id="ping_started_at_container">Ping started at : <span id="ping_started_at">N/A</span></p>
         </div>
-        <script>
-            const controller = new PingController();
-        </script>
     </body>
 </html>
