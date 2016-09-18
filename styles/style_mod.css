@@ -39,3 +39,6 @@ label {
 .clear {
     background-color:#FF3D00;
 }
+.hidden {
+    display: none;
+}
